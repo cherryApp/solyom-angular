@@ -7,9 +7,28 @@
 
   <div class="row">
     <div class="col">
-      <pre>
-        {{ list | json }}
-      </pre>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Vevő</th>
+            <th>Kibocsájtó</th>
+            <th>Összeg</th>
+            <th>Fiz.Hat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bill of list">
+            <td>{{ bill.szlaszam }}</td>
+            <td>{{ bill.vevo }}</td>
+            <td>{{ bill.kibocsajto }}</td>
+            <td>{{ bill.nOsszeg }}</td>
+            <td>{{ bill.fizHat }}</td>
+          </tr>
+        </tbody>
+
+
+      </table>
     </div>
   </div>
 </div>
