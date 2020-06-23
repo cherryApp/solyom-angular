@@ -10,8 +10,14 @@ import { Bill } from './model/bill';
 export class AppComponent {
   title = 'components';
   list: Bill[] = this.billService.list;
+  phrase = '';
+  searchKey = '';
 
   constructor(
     private billService: BillService,
   ) {}
+
+  getObjectKeys(object: any): string[] {
+    return object ? Object.keys(object) : [];
+  }
 }

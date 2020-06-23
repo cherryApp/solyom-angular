@@ -14,12 +14,12 @@ export class BillService {
     }),
     new Bill({
       szlaszam: 'LUK-2020-21459', db: 1, afaKulcs: '27', fizHat: new Date(2020, 5, 25),
-      kiallDatum: new Date(), kibocsajto: 'Lukoil Hungary Man. Kft. Bp. XXII. Lukoil út 22.',
+      kiallDatum: new Date(), kibocsajto: 'Lukoil Hungary Man. Kft. Bp. XXII. Lukoil út 23.',
       me: 'db', nOsszeg: 20000, teljDatum: new Date(), termek: 'ESZ-95', vevo: 'Nyugtás Vevő'
     }),
     new Bill({
       szlaszam: 'LUK-2020-21460', db: 1, afaKulcs: '27', fizHat: new Date(2020, 5, 25),
-      kiallDatum: new Date(), kibocsajto: 'Lukoil Hungary Man. Kft. Bp. XXII. Lukoil út 22.',
+      kiallDatum: new Date(), kibocsajto: 'Lukoil Hungary Man. Kft. Bp. XXII. Lukoil út 24.',
       me: 'db', nOsszeg: 20000, teljDatum: new Date(), termek: 'ESZ-95', vevo: 'Nyugtás Vevő'
     }),
   ];

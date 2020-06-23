@@ -6,6 +6,21 @@
   </div>
 
   <div class="row">
+    <div class="col-6"></div>
+    <div class="col-4">
+      <input [(ngModel)]="phrase" type="text" class="form-control mb-2" placeholder="keresés">
+    </div>
+    <div class="col-2">
+      <select [(ngModel)]="searchKey" name="search" class="form-control">
+        <option value="">összes</option>
+        <option *ngFor="let key of getObjectKeys(list[0])" [value]="key">
+          {{ key | titlecase }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col">
       <table class="table table-striped">
         <thead>
@@ -18,7 +33,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let bill of list">
+          <tr *ngFor="let bill of list | filter:phrase:searchKey">
             <td>{{ bill.szlaszam }}</td>
             <td>{{ bill.vevo }}</td>
             <td>{{ bill.kibocsajto }}</td>
