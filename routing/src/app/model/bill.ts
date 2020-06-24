@@ -11,8 +11,13 @@ export class Bill {
   kiallDatum: Date;
   fizHat: Date;
   brutto?: number;
+  id?: number;
 
   constructor(settings: Bill) {
+    if (!settings) {
+      return;
+    }
+
     for (const k in settings) {
       if (settings[k]) {
         this[k] = settings[k];

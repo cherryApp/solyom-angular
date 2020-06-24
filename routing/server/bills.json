@@ -1,18 +1,11 @@
 {
   "bill": [
     {
-      "id": 5,
-      "vevo": "Kamba",
-      "nOsszeg": 180718,
-      "fizHat": "2020-08-26",
-      "kibocsajto": "Kwinu"
-    },
-    {
       "id": 7,
-      "vevo": "Pixoboo",
-      "nOsszeg": 64384,
-      "fizHat": "2020-08-23",
-      "kibocsajto": "Yakijo"
+      "vevo": "SólyomSoft Kft.",
+      "kibocsajto": "Yakijo",
+      "nOsszeg": 10000,
+      "fizHat": "2020-08-30"
     },
     {
       "id": 8,
@@ -6957,6 +6950,13 @@
       "nOsszeg": 69252,
       "fizHat": "2020-08-04",
       "kibocsajto": "Tazz"
+    },
+    {
+      "id": 1001,
+      "vevo": "AndrásCége",
+      "kibocsajto": "JózsiCége",
+      "nOsszeg": 150000,
+      "fizHat": "2020-07-02"
     }
   ]
 }

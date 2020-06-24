@@ -1,1 +1,74 @@
-<p>bills works!</p>
+<div class="row">
+  <div class="col">
+    <h1>Számlázás</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <button routerLink="/bill/create" class="btn btn-success btn-block mb-3">
+      Új Számla Rögzítése
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-6"></div>
+  <div class="col-4">
+    <input [(ngModel)]="phrase" type="text" class="form-control mb-2" placeholder="keresés">
+  </div>
+  <div class="col-2">
+    <select *ngIf="list" [(ngModel)]="searchKey" name="search" class="form-control">
+      <option value="">összes</option>
+      <option *ngFor="let key of getObjectKeys(list[0])" [value]="key">
+        {{ key | titlecase }}
+      </option>
+    </select>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th>#</th>
+          <th>Vevő</th>
+          <th>Kibocsájtó</th>
+          <th>Összeg</th>
+          <th>Br.Összeg</th>
+          <th>Fiz.Hat</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let bill of list | filter:phrase:searchKey"
+          [ngClass]="setRowClasses(bill)">
+          <td>
+            <i class="fa fa-dollar"></i>
+          </td>
+          <td>{{ bill.id }}</td>
+          <td>{{ bill.vevo }}</td>
+          <td>{{ bill.kibocsajto }}</td>
+          <td>{{ bill.nOsszeg }}</td>
+          <td>{{ bill.nOsszeg | brutto }}</td>
+          <td>{{ bill.fizHat | date:'yyyy-MM-dd' }}</td>
+          <td>
+            <div class="btn-group">
+              <a [routerLink]="'/bill/'+bill.id" class="btn btn-info">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              </a>
+              <button (click)="onDelete(bill)" class="btn btn-danger">
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+
+
+    </table>
+  </div>
+</div>
