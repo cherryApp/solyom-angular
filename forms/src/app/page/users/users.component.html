@@ -1,0 +1,18 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th *ngFor="let col of cols">
+        {{ col.title }}
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of list$ | async">
+      <td *ngFor="let col of cols">
+        {{ user[col.key] }}
+      </td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>

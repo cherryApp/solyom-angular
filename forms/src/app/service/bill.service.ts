@@ -1,32 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Bill } from '../model/bill';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { BaseService } from './base.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BillService {
+export class BillService extends BaseService {
 
-  apiUrl = 'http://localhost:3000/bill/';
+  endPoint = 'bill';
 
   constructor(
-    private http: HttpClient,
-  ) {}
-
-  get(id?: string|number): Observable<any> {
-    return this.http.get(`${this.apiUrl}${ id ? id : '' }`);
+    httpClient: HttpClient,
+  ) {
+    super(httpClient);
   }
 
-  delete(id: string|number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}${id}`);
-  }
-
-  update(bill: Bill): Observable<any> {
-    return this.http.put(`${this.apiUrl}${bill.id}`, bill);
-  }
-
-  create(bill: Bill): Observable<any> {
-    return this.http.post(`${this.apiUrl}`, bill);
-  }
 }

@@ -4,6 +4,7 @@ import { HomeComponent } from './page/home/home.component';
 import { BillsComponent } from './page/bills/bills.component';
 import { BillEditComponent } from './page/bill-edit/bill-edit.component';
 import { AboutComponent } from './page/about/about.component';
+import { UsersComponent } from './page/users/users.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: 'bills',
     component: BillsComponent,
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
   },
   {
     path: 'bill/:id',

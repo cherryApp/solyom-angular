@@ -10,6 +10,7 @@ export class NavComponent implements OnInit {
   menuItems: {title: string, href: string}[] = [
     {title: 'Home', href: '/'},
     {title: 'Számlák', href: '/bills'},
+    {title: 'Felhasználók', href: '/users'},
     {title: 'Rólunk', href: '/about'},
   ];
 

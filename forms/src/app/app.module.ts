@@ -13,6 +13,7 @@ import { BillEditComponent } from './page/bill-edit/bill-edit.component';
 import { NavComponent } from './common/nav/nav.component';
 import { FilterPipe } from './pipe/filter.pipe';
 import { BruttoPipe } from './pipe/brutto.pipe';
+import { UsersComponent } from './page/users/users.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { BruttoPipe } from './pipe/brutto.pipe';
     NavComponent,
     FilterPipe,
     BruttoPipe,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,
