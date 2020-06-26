@@ -1,11 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from 'src/app/service/user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/user';
-import { Observable } from 'rxjs';
-import { FormGroup, Validators, FormControl, AsyncValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
+import { Observable, combineLatest, of } from 'rxjs';
+import { FormGroup, Validators, FormControl, AsyncValidatorFn, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { map, tap } from 'rxjs/operators';
 import { InputField } from 'src/app/dyn-form/model/input-field';
+import { SettingsService } from 'src/app/service/settings.service';
+import { TextareaField } from 'src/app/dyn-form/model/textarea-field';
+import { SelectField } from 'src/app/dyn-form/model/select-field';
+import { send } from 'process';
 
 @Component({
   selector: 'app-user-edit',
@@ -25,24 +29,26 @@ export class UserEditComponent implements OnInit {
     phone: new FormControl('', Validators.required),
   });
 
-  fieldList: any[] = [
-    new InputField({value: 'Józsi', key: 'first_name', label: 'Knév', type: 'text', controlType: 'input'})
-  ];
+  fieldList: any[] = [];
 
   constructor(
     private userService: UserService,
     private ar: ActivatedRoute,
+    private settingsService: SettingsService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
     this.id = this.ar.snapshot.params.id;
-    this.user$ = this.userService.get(this.id).pipe(
-      tap( (user: User) => {
-        console.log(user);
-        for (const key of Object.keys(this.formGroup.controls)) {
-          this.formGroup.controls[key].setValue(user[key]);
-        }
-      })
+    this.user$ = combineLatest([
+      this.userService.get(this.id),
+      this.settingsService.get(),
+    ]).pipe(
+      tap((response: [User, any]) => {
+        console.log(response);
+        this.getFormGroup(response[1].userEditForm, response[0]);
+      }),
+      map( (response: [User, any]) => response[0] )
     );
   }
 
@@ -50,7 +56,40 @@ export class UserEditComponent implements OnInit {
     return this.userService.checkEmail(ctrl.value, this.id);
   }
 
-  onSave(): void {
-    console.log(this.formGroup);
+  onSave(user: User): void {
+    const sendData = {id: this.id, ...user};
+    this.userService.update(sendData).subscribe(
+      resp => this.router.navigate(['users']),
+      err => alert(err.message)
+    );
+  }
+
+  getFormGroup(fields: any, data: any): void {
+    const list: any[] = [];
+    for (const field of fields) {
+      let control = null;
+      switch (field.controlType) {
+        case 'select':
+          control = new SelectField(field);
+          break;
+        case 'textarea':
+          control = new TextareaField(field);
+          break;
+        default:
+          control = new InputField(field);
+      }
+      control.validators = this.getValidators(control.validators);
+      control.value = data[field.key];
+      list.push(control);
+    }
+    this.fieldList = list;
+  }
+
+  getValidators(validators: string[]): ValidatorFn[] {
+    return validators.map( validator => {
+      const v = validator.split(':');
+      const method: string = v.shift();
+      return v.length === 0 ? Validators[method] : Validators[method](...v);
+    });
   }
 }

@@ -35,7 +35,7 @@
 
     </form> -->
 
-    <app-solyom-form [fieldList]="fieldList"></app-solyom-form>
+    <app-solyom-form [fieldList]="fieldList" (submitted)="onSave($event)"></app-solyom-form>
 
   </div>
 </div>

@@ -27,11 +27,11 @@ export abstract class BaseService {
     return this.http.delete(`${this.getApiUrl()}${id}`);
   }
 
-  update(bill: Bill): Observable<any> {
+  update(bill: any): Observable<any> {
     return this.http.put(`${this.getApiUrl()}${bill.id}`, bill);
   }
 
-  create(bill: Bill): Observable<any> {
+  create(bill: any): Observable<any> {
     return this.http.post(`${this.getApiUrl()}`, bill);
   }
 
