@@ -15,6 +15,8 @@ import { FilterPipe } from './pipe/filter.pipe';
 import { BruttoPipe } from './pipe/brutto.pipe';
 import { UsersComponent } from './page/users/users.component';
 import { UserEditComponent } from './page/user-edit/user-edit.component';
+import { FormFieldComponent } from './dyn-form/common/form-field/form-field.component';
+import { FormComponent } from './dyn-form/common/form/form.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { UserEditComponent } from './page/user-edit/user-edit.component';
     BruttoPipe,
     UsersComponent,
     UserEditComponent,
+    FormFieldComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,

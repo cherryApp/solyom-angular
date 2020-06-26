@@ -1,6 +1,6 @@
 <div *ngIf="(user$ | async) as user" class="row">
   <div class="col-12 col-md-6 offset-md-3">
-    <form [formGroup]="formGroup">
+    <!-- <form [formGroup]="formGroup">
       <div class="form-group">
         <label for="">Vezetéknév</label>
         <input formControlName="last_name" type="text" class="form-control">
@@ -33,6 +33,9 @@
         Mentés
       </button>
 
-    </form>
+    </form> -->
+
+    <app-solyom-form [fieldList]="fieldList"></app-solyom-form>
+
   </div>
 </div>

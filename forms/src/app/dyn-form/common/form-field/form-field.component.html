@@ -1,0 +1,18 @@
+<div [formGroup]="group" class="form-group">
+  <label [for]="field.key">{{ field.label }}</label>
+  <div [ngSwitch]="field.controlType">
+    <!-- Select Field. -->
+    <select *ngSwitchCase="'select'" [formControlName]="field.key" [name]="field.key" [id]="field.key" class="form-contol">
+      <option *ngFor="let option of field['options']" [value]="option.value">
+        {{ option.title }}
+      </option>
+    </select>
+    <!-- Textarea. -->
+    <textarea class="form-control" *ngSwitchCase="'textarea'" [formControlName]="field.key" [id]="field.key" cols="30" rows="10"></textarea>
+    <!-- The Input is the default element. -->
+    <input class="form-control" *ngSwitchDefault [formControlName]="field.key" [id]="field.key" [type]="field['type']">
+  </div>
+  <div [hidden]="!isError" class="error-message">
+    {{ isError?.message || field.errorMessage }}
+  </div>
+</div>

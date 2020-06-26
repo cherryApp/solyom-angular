@@ -5,6 +5,7 @@ import { User } from 'src/app/model/user';
 import { Observable } from 'rxjs';
 import { FormGroup, Validators, FormControl, AsyncValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import { map, tap } from 'rxjs/operators';
+import { InputField } from 'src/app/dyn-form/model/input-field';
 
 @Component({
   selector: 'app-user-edit',
@@ -23,6 +24,10 @@ export class UserEditComponent implements OnInit {
     address: new FormControl('', Validators.required),
     phone: new FormControl('', Validators.required),
   });
+
+  fieldList: any[] = [
+    new InputField({value: 'Józsi', key: 'first_name', label: 'Knév', type: 'text', controlType: 'input'})
+  ];
 
   constructor(
     private userService: UserService,

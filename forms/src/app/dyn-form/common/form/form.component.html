@@ -1,0 +1,6 @@
+<form (ngSubmit)="onSubmit()">
+  <app-form-field *ngFor="let field of fieldList" [group]="group" [field]="field"></app-form-field>
+  <button [disabled]="group.invalid" type="submit" class="btn btn-primary btn-block">
+    Mentés
+  </button>
+</form>
