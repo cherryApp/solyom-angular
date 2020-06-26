@@ -5,6 +5,7 @@ import { BillsComponent } from './page/bills/bills.component';
 import { BillEditComponent } from './page/bill-edit/bill-edit.component';
 import { AboutComponent } from './page/about/about.component';
 import { UsersComponent } from './page/users/users.component';
+import { UserEditComponent } from './page/user-edit/user-edit.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'bill/:id',
     component: BillEditComponent,
+  },
+  {
+    path: 'user/:id',
+    component: UserEditComponent,
   },
   {
     path: 'about',

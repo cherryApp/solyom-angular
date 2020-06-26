@@ -12,7 +12,7 @@ export abstract class BaseService {
   endPoint: string;
 
   constructor(
-    private http: HttpClient,
+    public http: HttpClient,
   ) {}
 
   getApiUrl() {

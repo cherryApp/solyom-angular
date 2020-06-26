@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -14,6 +14,7 @@ import { NavComponent } from './common/nav/nav.component';
 import { FilterPipe } from './pipe/filter.pipe';
 import { BruttoPipe } from './pipe/brutto.pipe';
 import { UsersComponent } from './page/users/users.component';
+import { UserEditComponent } from './page/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +27,14 @@ import { UsersComponent } from './page/users/users.component';
     FilterPipe,
     BruttoPipe,
     UsersComponent,
+    UserEditComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

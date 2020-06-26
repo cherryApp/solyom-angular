@@ -12,7 +12,11 @@
       <td *ngFor="let col of cols">
         {{ user[col.key] }}
       </td>
-      <td></td>
+      <td>
+        <button [routerLink]="'/user/'+user.id" class="btn btn-info">
+          <i class="fa fa-edit"></i>
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>
